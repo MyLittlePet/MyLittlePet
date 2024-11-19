@@ -12,10 +12,10 @@ def create_schedule_item(name, valor, nota, image_url):
                         src=image_url,  # Caminho da imagem
                         fit=ft.ImageFit.COVER,
                     ),
-                    border_radius=25,  # Mantendo bordas arredondadas
+                    border_radius=25,  
                     clip_behavior=ft.ClipBehavior.HARD_EDGE,
                 ),
-                # Informações do agendamento (nome, valor e nota)
+               
                 ft.Column(
                     [
                         ft.Text(name, size=16, weight=ft.FontWeight.BOLD, color="black"),
@@ -35,7 +35,7 @@ def create_schedule_item(name, valor, nota, image_url):
                 ),
             ],
             alignment=ft.MainAxisAlignment.START,
-            spacing=15,  # Espaçamento entre a imagem e as informações
+            spacing=15, 
         ),
         padding=10,
         bgcolor="#F4E3D7",
@@ -46,7 +46,7 @@ def create_schedule_item(name, valor, nota, image_url):
 def main(page: ft.Page):
     page.title = "Profissionais"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.vertical_alignment = ft.MainAxisAlignment.START  # Inicia no topo
+    page.vertical_alignment = ft.MainAxisAlignment.START  
     page.padding = 0
     page.bgcolor = '#FFDD78'
     page.window_width = 287.38
@@ -66,9 +66,9 @@ def main(page: ft.Page):
                         size=15,
                         bgcolor="#D4A373",
                     ),
-                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10),  # Adiciona padding ao redor do texto
-                    bgcolor="#D4A373",  # Fundo do texto
-                    border_radius=50,  # Arredonda as bordas
+                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10),  
+                    bgcolor="#D4A373",  
+                    border_radius=50,  
                 ),
             ],
             alignment=ft.MainAxisAlignment.START,
@@ -79,7 +79,7 @@ def main(page: ft.Page):
         bgcolor="#FFDD78",
     )
 
-    # Lista de agendamentos com fotos (horarios)
+    # Lista de agendamentos
     horarios = [
         {"name": "Mateus Emiliano", "valor": "100", "nota": "4.9", "image_url": "https://i.pinimg.com/736x/fe/e6/01/fee6011fbd468bd46d2dfab5d4551cac.jpg"},
         {"name": "Marcos Ribeiro", "valor": "120", "nota": "4.8", "image_url": "https://i.pinimg.com/736x/70/80/8d/70808dc7d62d425dbf93b44b7ea8b6ac.jpg"},
@@ -93,27 +93,27 @@ def main(page: ft.Page):
                 create_schedule_item(horario["name"], horario["valor"], horario["nota"], horario["image_url"]) 
                 for horario in horarios
             ],
-            spacing=10,  # Maior espaçamento entre os itens
+            spacing=10, 
         ),
-        bgcolor="#73513D",  # Fundo marrom atrás dos cards
+        bgcolor="#73513D",  
         border_radius=20,
         padding=ft.Padding(top=10, bottom=60, left=10, right=10),
-        margin=ft.margin.only(top=10, bottom=0, left=0, right=0),  # Corrigido para o uso de "only"
+        margin=ft.margin.only(top=10, bottom=0, left=0, right=0), 
     )
 
-    # Estrutura de layout da página (header + cards)
+   
     page.add(
         ft.Column(
             controls=[
-                header,  # Adiciona o header no topo
-                schedule_container  # Adiciona os cards abaixo do header
+                header, 
+                schedule_container 
             ],
-            spacing=10,  # Espaçamento entre os cards
-            scroll="auto",  # Rolagem automática se necessário
+            spacing=10,  
+            scroll="auto",  
         ),
     )
 
-    # Barra de navegação (não é o foco, mas incluída no código)
+    # Barra de navegação 
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationBarDestination(icon=ft.icons.HOME_ROUNDED, label="Tela Inicial"),
@@ -125,7 +125,7 @@ def main(page: ft.Page):
 
     page.update()
 
-# Executa o aplicativo
+
 ft.app(target=main)
 
 

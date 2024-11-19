@@ -24,9 +24,9 @@ def main(page: ft.Page):
                         size=15,
                         bgcolor="#D4A373",
                     ),
-                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10),  # Adiciona padding ao redor do texto
-                    bgcolor="#D4A373",  # Fundo do texto
-                    border_radius=50,  # Arredonda as bordas
+                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10),  
+                    bgcolor="#D4A373",  
+                    border_radius=50, 
                 ),
             ],
             alignment=ft.MainAxisAlignment.START,
@@ -42,7 +42,7 @@ def main(page: ft.Page):
         return ft.Container(
             content=ft.Row(
                 [
-                    # Substituindo o círculo pelo componente de imagem
+                    
                     ft.Container(
                         width=50,
                         height=50,
@@ -56,11 +56,10 @@ def main(page: ft.Page):
                     ft.Column(
                         [
                             ft.Text(name, size=16, weight=ft.FontWeight.BOLD, color="black"),
-                            # Exibir data e hora na mesma linha
                             ft.Row(
                                 [
                                     ft.Text(date, size=14, color="#7D7D7D"),
-                                    ft.Text(" • ", size=14, color="#7D7D7D"),  # Separador
+                                    ft.Text(" • ", size=14, color="#7D7D7D"),  
                                     ft.Text(time, size=14, color="#6A6A6A"),
                                 ],
                                 alignment=ft.MainAxisAlignment.START,
@@ -96,12 +95,12 @@ def main(page: ft.Page):
                 "Maria dos Santos", "17/12/2024", "18:30", "https://i.pinimg.com/736x/0f/cc/26/0fcc2683940ed39fb786bf43ccd06d63.jpg"
             ),
         ],
-        spacing=10,  # Maior espaçamento entre os itens
+        spacing=10, 
     ),
     bgcolor="#73513D",  # Fundo marrom atrás dos cards
     border_radius=20,
     padding=ft.Padding(top=10, bottom=50, left=10, right=10),
-    margin=ft.margin.only(top=10, bottom=0, left=0, right=0),  # Corrigido para o uso de "only"
+    margin=ft.margin.only(top=10, bottom=0, left=0, right=0),  
 )
 
     # Footer com botões
