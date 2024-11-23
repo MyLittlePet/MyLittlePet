@@ -12,10 +12,10 @@ def create_schedule_item(name, valor, nota, image_url):
                         src=image_url,  # Caminho da imagem
                         fit=ft.ImageFit.COVER,
                     ),
-                    border_radius=25,  
+                    border_radius=25,  # Mantendo bordas arredondadas
                     clip_behavior=ft.ClipBehavior.HARD_EDGE,
                 ),
-               
+                # Informações do agendamento (nome, valor e nota)
                 ft.Column(
                     [
                         ft.Text(name, size=16, weight=ft.FontWeight.BOLD, color="black"),
@@ -35,7 +35,7 @@ def create_schedule_item(name, valor, nota, image_url):
                 ),
             ],
             alignment=ft.MainAxisAlignment.START,
-            spacing=15, 
+            spacing=15,  # Espaçamento entre a imagem e as informações
         ),
         padding=10,
         bgcolor="#F4E3D7",
@@ -46,7 +46,7 @@ def create_schedule_item(name, valor, nota, image_url):
 def main(page: ft.Page):
     page.title = "Profissionais"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.vertical_alignment = ft.MainAxisAlignment.START  
+    page.vertical_alignment = ft.MainAxisAlignment.START  # Inicia no topo
     page.padding = 0
     page.bgcolor = '#FFDD78'
     page.window_width = 287.38
@@ -64,11 +64,11 @@ def main(page: ft.Page):
                         color='white',
                         text_align='center',
                         size=15,
-                        bgcolor="#D4A373",
+                        bgcolor="#8C5120",
                     ),
-                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10),  
-                    bgcolor="#D4A373",  
-                    border_radius=50,  
+                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10),  # Adiciona padding ao redor do texto
+                    bgcolor="#8C5120",  # Fundo do texto
+                    border_radius=50,  # Arredonda as bordas
                 ),
             ],
             alignment=ft.MainAxisAlignment.START,
@@ -79,12 +79,12 @@ def main(page: ft.Page):
         bgcolor="#FFDD78",
     )
 
-    # Lista de agendamentos
+    # Lista de agendamentos com fotos (horarios)
     horarios = [
-        {"name": "Mateus Emiliano", "valor": "100", "nota": "4.9", "image_url": "https://i.pinimg.com/736x/fe/e6/01/fee6011fbd468bd46d2dfab5d4551cac.jpg"},
-        {"name": "Marcos Ribeiro", "valor": "120", "nota": "4.8", "image_url": "https://i.pinimg.com/736x/70/80/8d/70808dc7d62d425dbf93b44b7ea8b6ac.jpg"},
-        {"name": "Julia Martins", "valor": "150", "nota": "4.7", "image_url": "https://i.pinimg.com/736x/56/c0/3d/56c03da68f361d79db82d0ff037ce1e1.jpg"},
-        {"name": "Maria dos Santos", "valor": "90", "nota": "5.0", "image_url": "https://i.pinimg.com/736x/0f/cc/26/0fcc2683940ed39fb786bf43ccd06d63.jpg"}
+        {"name": "Mateus Emiliano", "valor": "100", "nota": "4.9", "image_url": "https://i.pinimg.com/736x/5a/be/3b/5abe3b7f37eee1519937b8923be6ecfc.jpg"},
+        {"name": "Marcos Ribeiro", "valor": "120", "nota": "4.8", "image_url": "https://i.pinimg.com/736x/32/a5/b8/32a5b84575fc64b48f10a0db8b1b47d4.jpg"},
+        {"name": "Julia Martins", "valor": "150", "nota": "4.7", "image_url": "https://i.pinimg.com/736x/f2/35/0d/f2350d28902a31c70b748f6c83c555f6.jpg"},
+        {"name": "Maria dos Santos", "valor": "90", "nota": "5.0", "image_url": "https://i.pinimg.com/736x/64/dd/e1/64dde1ba44c0b2488704222b14b60612.jpg"}
     ]
 
     schedule_container = ft.Container(
@@ -93,27 +93,27 @@ def main(page: ft.Page):
                 create_schedule_item(horario["name"], horario["valor"], horario["nota"], horario["image_url"]) 
                 for horario in horarios
             ],
-            spacing=10, 
+            spacing=10,  # Maior espaçamento entre os itens
         ),
-        bgcolor="#73513D",  
+        bgcolor="#73513D",  # Fundo marrom atrás dos cards
         border_radius=20,
         padding=ft.Padding(top=10, bottom=60, left=10, right=10),
-        margin=ft.margin.only(top=10, bottom=0, left=0, right=0), 
+        margin=ft.margin.only(top=10, bottom=0, left=0, right=0),  # Corrigido para o uso de "only"
     )
 
-   
+    # Estrutura de layout da página (header + cards)
     page.add(
         ft.Column(
             controls=[
-                header, 
-                schedule_container 
+                header,  # Adiciona o header no topo
+                schedule_container  # Adiciona os cards abaixo do header
             ],
-            spacing=10,  
-            scroll="auto",  
+            spacing=10,  # Espaçamento entre os cards
+            scroll="auto",  # Rolagem automática se necessário
         ),
     )
 
-    # Barra de navegação 
+    # Barra de navegação (não é o foco, mas incluída no código)
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationBarDestination(icon=ft.icons.HOME_ROUNDED, label="Tela Inicial"),
@@ -125,7 +125,7 @@ def main(page: ft.Page):
 
     page.update()
 
-
+# Executa o aplicativo
 ft.app(target=main)
 
 

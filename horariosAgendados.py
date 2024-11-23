@@ -22,11 +22,11 @@ def main(page: ft.Page):
                         color='white',
                         text_align='center',
                         size=15,
-                        bgcolor="#D4A373",
+                        bgcolor="#8C5120",
                     ),
-                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10),  
-                    bgcolor="#D4A373",  
-                    border_radius=50, 
+                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10), 
+                    bgcolor="#8C5120",  # Fundo do texto
+                    border_radius=50,  # Arredonda as bordas
                 ),
             ],
             alignment=ft.MainAxisAlignment.START,
@@ -42,7 +42,6 @@ def main(page: ft.Page):
         return ft.Container(
             content=ft.Row(
                 [
-                    
                     ft.Container(
                         width=50,
                         height=50,
@@ -50,16 +49,17 @@ def main(page: ft.Page):
                             src=image_url,  # Caminho da imagem
                             fit=ft.ImageFit.COVER,
                         ),
-                        border_radius=25,  # Mantendo bordas arredondadas
+                        border_radius=25, 
                         clip_behavior=ft.ClipBehavior.HARD_EDGE,
                     ),
                     ft.Column(
                         [
                             ft.Text(name, size=16, weight=ft.FontWeight.BOLD, color="black"),
+                            # Exibir data e hora na mesma linha
                             ft.Row(
                                 [
                                     ft.Text(date, size=14, color="#7D7D7D"),
-                                    ft.Text(" • ", size=14, color="#7D7D7D"),  
+                                    ft.Text(" • ", size=14, color="#7D7D7D"),  # Separador
                                     ft.Text(time, size=14, color="#6A6A6A"),
                                 ],
                                 alignment=ft.MainAxisAlignment.START,
@@ -83,24 +83,24 @@ def main(page: ft.Page):
     content=ft.Column(
         [
             create_schedule_item(
-                "Mateus Emiliano", "10/11/2024", "09:30", "https://i.pinimg.com/736x/fe/e6/01/fee6011fbd468bd46d2dfab5d4551cac.jpg"
+                "Mateus Emiliano", "10/11/2024", "09:30", "https://i.pinimg.com/736x/5a/be/3b/5abe3b7f37eee1519937b8923be6ecfc.jpg"
             ),
             create_schedule_item(
-                "Marcos Ribeiro", "25/11/2024", "11:00", "https://i.pinimg.com/736x/70/80/8d/70808dc7d62d425dbf93b44b7ea8b6ac.jpg"
+                "Marcos Ribeiro", "25/11/2024", "11:00", "https://i.pinimg.com/736x/32/a5/b8/32a5b84575fc64b48f10a0db8b1b47d4.jpg"
             ),
             create_schedule_item(
-                "Julia Martins", "05/12/2024", "15:00", "https://i.pinimg.com/736x/56/c0/3d/56c03da68f361d79db82d0ff037ce1e1.jpg"
+                "Julia Martins", "05/12/2024", "15:00", "https://i.pinimg.com/736x/f2/35/0d/f2350d28902a31c70b748f6c83c555f6.jpg"
             ),
             create_schedule_item(
-                "Maria dos Santos", "17/12/2024", "18:30", "https://i.pinimg.com/736x/0f/cc/26/0fcc2683940ed39fb786bf43ccd06d63.jpg"
+                "Maria dos Santos", "17/12/2024", "18:30", "https://i.pinimg.com/736x/64/dd/e1/64dde1ba44c0b2488704222b14b60612.jpg"
             ),
         ],
-        spacing=10, 
+        spacing=10,  # Maior espaçamento entre os itens
     ),
     bgcolor="#73513D",  # Fundo marrom atrás dos cards
     border_radius=20,
     padding=ft.Padding(top=10, bottom=50, left=10, right=10),
-    margin=ft.margin.only(top=10, bottom=0, left=0, right=0),  
+    margin=ft.margin.only(top=10, bottom=0, left=0, right=0), 
 )
 
     # Footer com botões
