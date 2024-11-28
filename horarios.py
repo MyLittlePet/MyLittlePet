@@ -25,10 +25,10 @@ def main(page: ft.Page):
             content=ft.Container(
                 content=ft.Row(
                     controls=[
-                        # Foto de perfil (com URL específica)
+                        # Foto de perfil 
                         ft.CircleAvatar(
-    radius=20,  # Tamanho pequeno da foto
-    foreground_image_url=horario["foto"],  # Usando a chave correta
+    radius=20, 
+    foreground_image_url=horario["foto"],  
 ),
 
                         # Coluna com o nome, valor e turno
@@ -57,12 +57,12 @@ def main(page: ft.Page):
                             spacing=5,
                         ),
                     ],
-                    spacing=10,  # Espaçamento entre a foto e o texto
+                    spacing=10, 
                 ),
                 padding=10,
                 bgcolor="#D8AA20",
                 border_radius=10,
-                width=300,  # Aumentando a largura dos cards
+                width=300,  
             ),
         ),
     )
@@ -102,9 +102,8 @@ def main(page: ft.Page):
         indicator_color='#DE8A18'
     )
 
-    page.update()  # Atualiza a tela
+    page.update()  
 
-# Executa o aplicativo
 ft.app(target=main)
 
 
