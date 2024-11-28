@@ -1,230 +1,141 @@
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "Serviços "
+    page.title = "Serviços Agendados"
+    page.bgcolor = '#FFDD78'
+    page.padding = 0  
+
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.window_width = 287
+    page.window_height = 585
 
-    stack = ft.Stack(
-        width=293,
-        height=585,
-    )
-
-    first_bg = ft.Container(
-        width=293,
-        height=585,
-        border_radius=20,
+   
+    header = ft.Container(
+        content=ft.Row(
+            [
+               
+                ft.IconButton(
+                    icon=ft.icons.ARROW_BACK,
+                    icon_size=30,
+                    on_click=lambda e: None, 
+                    icon_color="black"  
+                ),
+                ft.Container(
+                    content=ft.Text(
+                        "Serviços Agendados",
+                        weight=ft.FontWeight.BOLD,
+                        color='white',
+                        text_align='center',
+                        size=15,
+                        bgcolor="#8C5120",
+                    ),
+                    padding=ft.padding.only(left=20, right=20, top=10, bottom=10), 
+                    bgcolor="#8C5120",
+                    border_radius=50,
+                ),
+            ],
+            alignment=ft.MainAxisAlignment.START,
+            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        ),
+        padding=10,
+        height=60,
         bgcolor="#FFDD78",
     )
 
-    second_bg = ft.Container(
-        width=293,
-        height=456,
-        border_radius=15,
-        bgcolor="#7D5D42",
-    )
-    second_bg.top = 126
-
-    third_bg = ft.Container(
-        width=293,
-        height=58,
+   
+    middle_background = ft.Container(
+        bgcolor="#73513D",  
+        width=287.38,
+        height=585,
         border_radius=20,
-        bgcolor="#D0802B",
-    )
-    third_bg.top = 534
-
-    botao_flecha = ft.Container(
-        width=37,
-        height=38,
-        content=ft.Icon(
-            ft.icons.ARROW_BACK,
-            size=30,
-            color=ft.colors.BLACK,
-        ),
-        alignment=ft.alignment.center,
-        top=10,
-        left=5,
-        on_click=lambda e: (
-            page.overlay.append(ft.AlertDialog(
-                title=ft.Text("Você clicou na flecha!")
-            )),
-            page.update()
-        ),
     )
 
-    botao1 = ft.Container(
-        width=257,
-        height=74,
-        border_radius=15,
-        bgcolor="#7D8E4E",
-        content=ft.Row(
-            controls=[
-                ft.Container(
-                    width=61,
-                    height=61,
-                    bgcolor="#D9D9D9",
-                    border_radius=30.5,
-                    alignment=ft.alignment.center,
+    # Avatar
+    def create_avatar():
+        return ft.Container(
+            width=61,
+            height=61,
+            bgcolor="#808080",  
+            border_radius=30.5, 
+        )
+
+   
+    def create_button(text):
+        avatar = create_avatar()
+        return ft.ElevatedButton(
+            width=257, 
+            height=74,
+            style=ft.ButtonStyle(
+                shape=ft.RoundedRectangleBorder(radius=15),
+                bgcolor="#779030",
+                text_style=ft.TextStyle(
+                    weight=ft.FontWeight.W_400,
+                    size=20,
+                    color="#FFFFFF"
                 ),
-                ft.Text(
-                    "Lucas Silva da Costa",
-                    size=16,
-                    weight=ft.FontWeight.W_500,
-                    color="#FFFFFF",
-                )
-            ],
-            alignment=ft.MainAxisAlignment.START,
-            spacing=20,
-        ),
-        alignment=ft.alignment.center,
+            ),
+            on_click=None,  
+            content=ft.Row(  
+                [
+                    avatar,  
+                    ft.Text(  
+                        text,  
+                        size=15,
+                        weight=ft.FontWeight.W_700,  
+                        color="#FFFFFF",  
+                        text_align=ft.TextAlign.START,  
+                        max_lines=1,  
+                        overflow=ft.TextOverflow.ELLIPSIS,  
+                    ),
+                ],
+                alignment=ft.MainAxisAlignment.START,  # Alinha o conteúdo à esquerda
+                spacing=10,  # Espaçamento entre o avatar e o texto
+            ),
+        )
+
+
+    button1 = create_button("Lucas Silva da Costa")
+    button2 = create_button("Ana Clara Macedo")
+    button3 = create_button("Julia Soares Espinoza")
+    button4 = create_button("Luiz Mariano Marcos")
+
+  
+    button_container = ft.Column(
+        controls=[
+            ft.Container(content=button1, padding=ft.padding.all(10)),
+            ft.Container(content=button2, padding=ft.padding.all(10)),
+            ft.Container(content=button3, padding=ft.padding.all(10)),
+            ft.Container(content=button4, padding=ft.padding.all(10)),
+        ],
+        alignment=ft.MainAxisAlignment.START, 
+        spacing=10, 
+        expand=True, 
     )
 
-    botao2 = ft.Container(
-        width=257,
-        height=74,
-        border_radius=15,
-        bgcolor="#7D8E4E",
-        content=ft.Row(
-            controls=[
-                ft.Container(
-                    width=61,
-                    height=61,
-                    bgcolor="#D9D9D9",
-                    border_radius=30.5,
-                    alignment=ft.alignment.center,
-                ),
-                ft.Text(
-                    "Ana Clara Macedo",
-                    size=16,
-                    weight=ft.FontWeight.W_500,
-                    color="#FFFFFF",
-                )
-            ],
-            alignment=ft.MainAxisAlignment.START,
-            spacing=20,
-        ),
-        alignment=ft.alignment.center,
+   
+    stack = ft.Stack(
+        controls=[middle_background, button_container], 
+        width=287.38,
+        height=585,
     )
 
-    botao3 = ft.Container(
-        width=257,
-        height=74,
-        border_radius=15,
-        bgcolor="#7D8E4E",
-        content=ft.Row(
-            controls=[
-                ft.Container(
-                    width=61,
-                    height=61,
-                    bgcolor="#D9D9D9",
-                    border_radius=30.5,
-                    alignment=ft.alignment.center,
-                ),
-                ft.Text(
-                    "Julia Soares Espinoza",
-                    size=16,
-                    weight=ft.FontWeight.W_500,
-                    color="#FFFFFF",
-                )
-            ],
-            alignment=ft.MainAxisAlignment.START,
-            spacing=20,
-        ),
-        alignment=ft.alignment.center,
+   
+    button_container.top = -3 
+
+    # Footer com botões
+    page.navigation_bar = ft.NavigationBar(
+        destinations=[ 
+            ft.NavigationBarDestination(icon=ft.icons.HOME_ROUNDED, label="Tela Inicial"),
+            ft.NavigationBarDestination(icon=ft.icons.PERSON_ROUNDED, label="Perfil"),
+        ],
+        bgcolor="#BF5F0B",
+        indicator_color="#DE8A18",
     )
 
-    botao4 = ft.Container(
-        width=257,
-        height=74,
-        border_radius=15,
-        bgcolor="#7D8E4E",
-        content=ft.Row(
-            controls=[
-                ft.Container(
-                    width=61,
-                    height=61,
-                    bgcolor="#D9D9D9",
-                    border_radius=30.5,
-                    alignment=ft.alignment.center,
-                ),
-                ft.Text(
-                    "Luiz Mariano Marcos",
-                    size=16,
-                    weight=ft.FontWeight.W_500,
-                    color="#FFFFFF",
-                )
-            ],
-            alignment=ft.MainAxisAlignment.START,
-            spacing=20,
-        ),
-        alignment=ft.alignment.center,
-    )
+    # Adicionando elementos à página
+    page.add(header, stack)
+    page.update()
 
-    botao_column = ft.Column(
-        controls=[botao1, botao2, botao3, botao4],
-        spacing=40,
-        alignment=ft.MainAxisAlignment.CENTER,
-    )
-    botao_column.top = 106
-    botao_column.left = 18
-
-    servicos_texto = ft.Container(
-        width=231,
-        height=31,
-        border_radius=9,
-        bgcolor=ft.colors.BROWN,
-        content=ft.Text(
-            "Serviços Agendados",
-            size=16,
-            weight=ft.FontWeight.W_600,
-            color=ft.colors.WHITE,
-        ),
-        alignment=ft.alignment.center,
-    )
-    servicos_texto.top = 60
-    servicos_texto.left = 31
-
-    botao_tela_inicial = ft.Container(
-        width=63,
-        height=44,
-        content=ft.Column(
-            controls=[
-                ft.Icon(ft.icons.HOME, size=25, color=ft.colors.BLACK),
-                ft.Text("Tela Inicial", size=12, color=ft.colors.BLACK, text_align=ft.TextAlign.CENTER),
-            ],
-            spacing=1,
-            alignment=ft.MainAxisAlignment.CENTER,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-        ),
-        alignment=ft.alignment.center,
-        data="Tela Inicial",
-    )
-    botao_tela_inicial.top = 541
-    botao_tela_inicial.left = 58
-
-    botao_perfil = ft.Container(
-        width=63,
-        height=44,
-        content=ft.Column(
-            controls=[
-                ft.Icon(ft.icons.PERSON_ROUNDED, size=24, color=ft.colors.BLACK),
-                ft.Text("Perfil", size=12, color=ft.colors.BLACK, text_align=ft.TextAlign.CENTER),
-            ],
-            spacing=1,
-            alignment=ft.MainAxisAlignment.CENTER,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-        ),
-        alignment=ft.alignment.center,
-        data="Perfil",
-    )
-    botao_perfil.top = 541
-    botao_perfil.left = 172
-
-    stack.controls.extend([
-        first_bg, second_bg, third_bg, botao_flecha, servicos_texto,
-        botao_tela_inicial, botao_perfil, botao_column
-    ])
-
-    page.add(stack)
-
+# Executar o app
 ft.app(target=main)

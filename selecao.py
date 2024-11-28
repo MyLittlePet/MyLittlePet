@@ -8,7 +8,7 @@ def main(page: ft.Page):
 
     page.title = 'MyLittlePet'
     page.bgcolor = '#FFDD78'
-    page.window.width = 287.38
+    page.window.width = 287
     page.window.height = 585
     
 
