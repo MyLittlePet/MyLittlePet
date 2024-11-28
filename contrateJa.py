@@ -15,7 +15,7 @@ def main(page: ft.Page):
         avaliacao = avaliacao_field.value
         tipo_pet = tipo_pet_field.value
         valor_hora = valor_hora_field.value
-        # Exibir os dados coletados (substitua por ação desejada)
+        # Exibir os dados coletados
         page.dialog = ft.AlertDialog(
             title=ft.Text("Dados da Pesquisa"),
             content=ft.Text(f"Horário: {horario}\nAvaliação: {avaliacao}\nTipo de Pet: {tipo_pet}\nValor por Hora: {valor_hora}"),
@@ -82,7 +82,7 @@ def main(page: ft.Page):
     # Adiciona o container principal à página
     page.add(main_container)
 
-    # Barra de navegação sempre visível na parte inferior
+    # Barra de navegação
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationBarDestination(icon=ft.icons.HOME_ROUNDED, label="Tela Inicial"),
@@ -92,6 +92,6 @@ def main(page: ft.Page):
         indicator_color='#DE8A18'
     )
 
-    page.update()  # Garante que a barra de navegação seja exibida imediatamente
+    page.update() 
 
 ft.app(target=main)
