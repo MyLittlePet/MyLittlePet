@@ -18,7 +18,6 @@ def main(page: ft.Page):
             page.snack_bar = ft.SnackBar(ft.Text("Navegando para Perfil!"))
         page.snack_bar.open()
 
-    # Callback da barra de navegação
     def on_navigation_change(event):
         navigate_to(event.control.label)
 
@@ -72,12 +71,12 @@ def main(page: ft.Page):
                         fit=ft.ImageFit.COVER,
                         width=100,
                         height=100,
-                        border_radius=ft.border_radius.all(50),  # Torna a imagem redonda
+                        border_radius=ft.border_radius.all(50), 
                     ),
                     alignment=ft.alignment.center,
                     padding=ft.padding.all(10),
                 ),
-                # Nome do prestador centralizado
+                # Nome do prestador 
                 ft.Container(
                     content=ft.Text(
                         "Mateus Emiliano Soares",
@@ -87,7 +86,7 @@ def main(page: ft.Page):
                     ),
                     alignment=ft.alignment.center,
                 ),
-                # Valor por hora centralizado
+                # Valor por hora 
                 ft.Container(
                     content=ft.Text(
                         "Valor por Hora: R$100",
@@ -110,7 +109,7 @@ def main(page: ft.Page):
                     alignment=ft.MainAxisAlignment.CENTER,
                     spacing=5,
                 ),
-                # Botão "Iniciar Chat" centralizado
+                # Botão "Iniciar Chat
                 ft.Container(
                     content=ft.ElevatedButton(
                         text="Iniciar Chat",
@@ -119,8 +118,8 @@ def main(page: ft.Page):
                         color="white",
                         on_click=iniciar_chat,
                     ),
-                    alignment=ft.alignment.center,  # Centraliza o botão
-                    margin=ft.margin.only(top=10),  # Margem superior para separação
+                    alignment=ft.alignment.center,  
+                    margin=ft.margin.only(top=10),  
                 ),
             ],
             spacing=10,
@@ -135,16 +134,14 @@ def main(page: ft.Page):
     # Fundo marrom ao redor do cartão principal
     card_container = ft.Container(
         content=card,
-        bgcolor="#73513D",  # Fundo marrom
-        border_radius=20,  # Bordas arredondadas
-        padding=ft.Padding(top=10, bottom=60, left=10, right=10),  # Padding para espaçamento interno
-        margin=ft.margin.only(top=10),  # Margem superior para separar o fundo do cabeçalho
+        bgcolor="#73513D",  
+        border_radius=20,  
+        padding=ft.Padding(top=10, bottom=60, left=10, right=10),  
+        margin=ft.margin.only(top=10),  
     )
-
-    # Adiciona os widgets na página
     page.add(
-        header,  # Adiciona o cabeçalho personalizado
-        card_container,  # Adiciona o fundo marrom ao redor do cartão
+        header, 
+        card_container, 
     )
 
 ft.app(target=main)
