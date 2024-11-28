@@ -121,7 +121,7 @@ def main(page: ft.Page):
     )
 
    
-    button_container.top = -3 
+    button_container.top = -3  # Ajuste para mover os botões para baixo, no segundo background
 
     # Footer com botões
     page.navigation_bar = ft.NavigationBar(
