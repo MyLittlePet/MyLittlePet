@@ -1,242 +1,146 @@
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "Contratado"
-    page.bgcolor = "#FFDD78"
-
-    page.window.width = 287
-    page.window.height = 585
-
-    background = ft.Container(
-        width=287,
-        height=585,
-        bgcolor="#FFDD78",
-    )
-
-    segundo_bg = ft.Container(
-        width=253.77,
-        height=505,
-        bgcolor="#C2690A",
-    )
-
- 
-    botao_contratado = ft.ElevatedButton(
-        text="Sou contratado",
-        width=200,
-        height=40,
-        bgcolor="#4CAF50",
-        color="white",
-        style=ft.ButtonStyle(
-            shape=ft.RoundedRectangleBorder(radius=20)
-        ),
-        disabled=True
-    )
-
-    botao_container = ft.Container(
-        content=botao_contratado,
-        alignment=ft.alignment.center,
-        top=40,
-        left=30,
-    )
-
-    texto_nome_completo = ft.Text(
-        value="Nome completo:", 
-        weight=400,
-        size=15,
-        color="white"
-    )
-
-    texto_container = ft.Container(
-        content=texto_nome_completo,
-        top=100,
-        left=20,
-    )
-
-    textfield_nome_completo = ft.TextField(
-        width=184.29,
-        height=35,
-        border=1,
-        bgcolor="white",
-        color="black"
-    )
-
-    textfield_container = ft.Container(
-        content=textfield_nome_completo,
-        top=130,
-        left=20,
-    )
-
-    texto_rg = ft.Text(
-        value="Registro Geral (RG):", 
-        weight=400,
-        size=15,
-        color="black"
-    )
-
-    texto_rg_container = ft.Container(
-        content=texto_rg,
-        top=170,
-        left=20,
-    )
-
-    textfield_rg = ft.TextField(
-        width=184.29,
-        height=35,
-        border=1,
-        bgcolor="white",
-        color="black"
-    )
-
-    textfield_rg_container = ft.Container(
-        content=textfield_rg,
-        top=200,
-        left=20,
-    )
-
-    texto_servicos_gerais = ft.Text(
-        value="Serviços gerais:", 
-        weight=400,
-        size=15,
-        color="black"
-    )
-
-    texto_servicos_container = ft.Container(
-        content=texto_servicos_gerais,
-        top=240,
-        left=20,
-    )
-
-    dropdown_servicos = ft.Dropdown(
-        width=184.29,
-        height=35,
-        border=1,
-        bgcolor="white",
-        color="black",
-        options=[ 
-            ft.dropdown.Option("Banho e Tosa"),
-            ft.dropdown.Option("Vacinação"),
-            ft.dropdown.Option("Consulta Veterinária"),
-            ft.dropdown.Option("Hospedagem"),
-            ft.dropdown.Option("Adestramento"),
-            ft.dropdown.Option("Transporte de Animais"),
-            ft.dropdown.Option("Venda de Rações e Acessórios")
+    page.title = "Tela de Cadastro"
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.padding = 10
+    page.bgcolor = '#FFDD78'
+    page.window_width = 287.38
+    page.window_height = 585
+    
+    def cadastrar(e):
+        if not nome_input.value or not registro_input.value or not senha_input.value:
+            msg.value = "Por favor, preencha todos os campos."
+            page.update()
+            return
+        msg.value = f"Cadastro realizado com sucesso! Bem-vindo, {nome_input.value}!"
+        nome_input.value = ""
+        registro_input.value = ""
+        senha_input.value = ""
+        tipoPet_input.value = None
+        banco_input.value = ""
+        agencia_input.value = ""
+        conta_input.value = ""
+        page.update()
+    
+    tipoPet_input = ft.Dropdown(
+        label="Tipo de Serviço",
+        icon_enabled_color='black',
+        options=[
+            ft.dropdown.Option("Banho"),
+            ft.dropdown.Option("Tosa"),
         ],
+        width=300,
+        height=40, 
+        bgcolor='#F0F0F0',
+        color='black',
     )
-
-    dropdown_container = ft.Container(
-        content=dropdown_servicos,
-        top=270,
-        left=20,
-    )
-
-    texto_dados_bancarios = ft.Text(
-        value="Dados Bancários:", 
-        weight=400,
-        size=15,
-        color="black"
-    )
-
-    texto_dados_bancarios_container = ft.Container(
-        content=texto_dados_bancarios,
-        top=320,
-        left=20,
-    )
-
-   
-    textfield_numero_banco = ft.TextField(
-        width=184.29,
-        height=35,
-        border=1,
-        bgcolor="white",
-        color="black",
-        label="Número do banco"
-    )
-
-    textfield_numero_banco_container = ft.Container(
-        content=textfield_numero_banco,
-        top=350, 
-        left=20,
-    )
-
-    textfield_agencia = ft.TextField(
-        width=184.29,
-        height=35,
-        border=1,
-        bgcolor="white",
-        color="black",
-        label="Agência"
-    )
-
-    textfield_agencia_container = ft.Container(
-        content=textfield_agencia,
-        top=390,  
-        left=20,
-    )
-
-    textfield_conta = ft.TextField(
-        width=184.29,
-        height=35,
-        border=1,
-        bgcolor="white",
-        color="black",
-        label="Conta"
-    )
-
-    textfield_conta_container = ft.Container(
-        content=textfield_conta,
-        top=430,
-        left=20,
-    )
-
-   
-    texto_ja_tem_conta = ft.Text(
-        value="Já tem uma conta?", 
-        weight=400,
-        size=11,
-        color="black"
-    )
-
-    botao_logar = ft.ElevatedButton(
-        text="Logar",
-        width=85,
-        height=30,
-        bgcolor="#C2690A",
-        color="white",
-        style=ft.ButtonStyle(
-            shape=ft.RoundedRectangleBorder(radius=20),
-            side=ft.BorderSide(1, color="#C2690A"),
-        )
-    )
-
-    texto_botao_container = ft.Container(
-        content=ft.Row(
-            controls=[
-                texto_ja_tem_conta,
-                botao_logar
-            ],
-            alignment=ft.MainAxisAlignment.START
+    
+    # Título da tela
+    titulo = ft.Container(
+        content=ft.Text(
+            "Sou Contratado",
+            weight=ft.FontWeight.BOLD,
+            color='white',
+            text_align='center',
+            size=15
         ),
-        top=470, 
-        left=20,
+        bgcolor='#788C30',
+        width=150,
+        border_radius=25, 
+        height=40, 
+        padding=ft.Padding(top=10, right=10, bottom=10, left=10) 
     )
 
-    stack = ft.Stack()
-
-    stack.controls.append(background)
-    stack.controls.append(segundo_bg)
-    stack.controls.append(botao_container)
-    stack.controls.append(texto_container)
-    stack.controls.append(textfield_container)
-    stack.controls.append(texto_rg_container)
-    stack.controls.append(textfield_rg_container)
-    stack.controls.append(texto_servicos_container)
-    stack.controls.append(dropdown_container)
-    stack.controls.append(texto_dados_bancarios_container)
-    stack.controls.append(textfield_numero_banco_container)
-    stack.controls.append(textfield_agencia_container)
-    stack.controls.append(textfield_conta_container)
-    stack.controls.append(texto_botao_container)
-
-    page.add(stack)
+    dadosBanco = ft.Container(
+        content=ft.Text(
+            "Dados bancários:",
+            weight=ft.FontWeight.BOLD,
+            color='white',
+            text_align='center',
+            size=15
+        ),
+        bgcolor='#788C30',
+        width=150,
+        border_radius=25, 
+        height=40, 
+        padding=ft.Padding(top=10, right=10, bottom=10, left=10) 
+    )
+    
+    # Campos de entrada
+    nome_input = ft.TextField(label="Nome Completo", width=400, height=40, label_style=ft.TextStyle(color='#B0B0B0'), bgcolor='#F0F0F0', content_padding=ft.Padding(top=10, right=10, bottom=10, left=10))
+    registro_input = ft.TextField(label="RG", width=400, height=40, label_style=ft.TextStyle(color='#B0B0B0'), bgcolor='#F0F0F0', content_padding=ft.Padding(top=10, right=10, bottom=10, left=10))
+    senha_input = ft.TextField(label="Senha", password=True, height=40, can_reveal_password=True, width=400, label_style=ft.TextStyle(color='#B0B0B0'), bgcolor='#F0F0F0', content_padding=ft.Padding(top=10, right=10, bottom=10, left=10))
+    
+    #dados bancários
+    banco_input = ft.TextField(label="Número do banco", width=400, height=40, label_style=ft.TextStyle(color='#B0B0B0'), bgcolor='#F0F0F0', content_padding=ft.Padding(top=10, right=10, bottom=10, left=10))
+    agencia_input = ft.TextField(label="Agência", width=400, height=40, label_style=ft.TextStyle(color='#B0B0B0'), bgcolor='#F0F0F0', content_padding=ft.Padding(top=10, right=10, bottom=10, left=10))
+    conta_input = ft.TextField(label="Conta", width=400, height=40, label_style=ft.TextStyle(color='#B0B0B0'), bgcolor='#F0F0F0', content_padding=ft.Padding(top=10, right=10, bottom=10, left=10))
+    
+    cadastrar_button = ft.ElevatedButton(
+    content=ft.Row(
+        [
+            ft.Icon(ft.icons.PLAY_ARROW_ROUNDED, size=40)  
+        ],
+        alignment=ft.MainAxisAlignment.CENTER 
+    ),
+    on_click=cadastrar,
+    text=" ",
+    width=100,
+    height=40,
+    bgcolor='#788C30',
+    color='#232624'
+)
+    
+    # Mensagem de confirmação
+    msg = ft.Text("", color=ft.colors.GREEN)
+    
+    #clique
+    login_row = ft.Row(
+        controls=[
+            ft.Text("Já tem uma conta?", color=ft.colors.BLACK),
+            ft.GestureDetector(
+                content=ft.Text("Logar", color=ft.colors.BLUE, weight=ft.FontWeight.BOLD),
+                on_tap=lambda e: print("Login clicado"),
+            ),
+        ],
+        alignment=ft.MainAxisAlignment.CENTER
+    )
+    
+    #componentes na página
+    formulario_container = ft.Container(
+        content=ft.Column(
+            [
+                titulo,
+                nome_input,
+                registro_input,
+                tipoPet_input,
+                dadosBanco,
+                banco_input,
+                agencia_input,
+                conta_input,
+                login_row,
+                cadastrar_button,
+                msg
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            spacing=10
+        ),
+        width=260,
+        padding=18,
+        bgcolor="#BF5F0B",
+        border_radius=20,
+        shadow=ft.BoxShadow(
+            spread_radius=2,
+            blur_radius=10,
+            color=ft.colors.BLACK12,
+            offset=ft.Offset(4, 4),
+        ),
+        alignment=ft.alignment.center
+    )
+    
+    page.add(formulario_container)
 
 ft.app(target=main)
